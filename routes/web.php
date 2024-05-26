@@ -5,6 +5,8 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\RolePermissionController;
+use App\Http\Controllers\admin\RawProductController;
+use App\Http\Controllers\admin\RawProductSizeController;
 
 Route::controller(AuthController::class)->group(function (){
     Route::get('/sign-in','signInPage')->name('admin.sign-in');
@@ -36,5 +38,22 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('/role-permission-update','updateRolePermission')->name('admin.update.role.permission');
         Route::post('/update-role-permission-details/{id}','updateRolePermissionDetails')->name('admin.update.role-permission');
         Route::get('/delete-permission/{id}','deletePermission')->name('admin.delete.permission');
+    });
+
+    Route::prefix('raw-product')-> controller(RawProductController::class)->group(function (){
+        Route::get('/create-product','createProduct')->name('admin.create.product');
+        Route::post('/create-product','storeProduct')->name('admin.store.product');
+        Route::post('/update-product/{slug}','updateProduct')->name('admin.update.product');
+        Route::get('/product-list','productList')->name('admin.product.list');
+        Route::get('/product-details/{slug}','productDetails')->name('admin.product.details');
+        Route::get('/product-delete/{slug}','deleteProduct')->name('admin.product.delete');
+    });
+
+    Route::prefix('product-size')-> controller(RawProductSizeController::class)->group(function (){
+        Route::get('/create-product-size','createProduct')->name('admin.create.product.size');
+        Route::get('/update-raw-product-size/{id}','updateProduct')->name('admin.update.product.size');
+        Route::get('/delete-raw-product-size/{id}','deleteProduct')->name('admin.delete.product.size');
+        Route::post('/update-raw-product-size/{id}','updateRawProductSize')->name('admin.update.raw.product.size');
+        Route::post('/store-product-size','storeProductSize')->name('admin.store.product.size');
     });
 });

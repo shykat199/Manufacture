@@ -13,4 +13,6 @@ const USER_ROLE = 4;
 const CUSTOMER_ROLE = 5;
 const SUPPLIER_ROLE = 6;
 const MANUFACTURE_ROLE = 7;
+
 const ACTIVE_STATUS =1 ;
+const IN_ACTIVE_STATUS =0 ;
