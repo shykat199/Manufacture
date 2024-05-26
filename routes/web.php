@@ -24,6 +24,8 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('/user-details/{id}','userInfo')->name('admin.user.details');
         Route::post('/user-update-details','updateUserInfo')->name('admin.update.user.details');
         Route::get('/delete-user/{id}','deleteUser')->name('admin.delete.user');
+        Route::get('/create-user','createUser')->name('admin.create.user');
+        Route::post('/create-user','storeUser')->name('admin.store.user');
     });
     Route::prefix('acl')-> controller(RolePermissionController::class)->group(function (){
         Route::get('/role-list','role')->name('admin.role.list');

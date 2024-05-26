@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
-@section('title','Permission List')
-@section('page-breadcrumb','Permission List')
+@section('title','Role List')
+@section('page-breadcrumb','Role List')
 @push('admin.custom.style')
     <style>
         .button-group {

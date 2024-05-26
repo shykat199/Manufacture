@@ -45,6 +45,7 @@
             </a><!-- sl-menu-link -->
             <ul class="sl-menu-sub nav flex-column">
                 <li class="nav-item"><a href="{{route('admin.user.list')}}" class="nav-link">Manage User</a></li>
+                <li class="nav-item"><a href="{{route('admin.create.user')}}" class="nav-link">Create User</a></li>
             </ul>
         @endif
 

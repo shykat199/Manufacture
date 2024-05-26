@@ -38,7 +38,7 @@
                        <td>{{++$key}}</td>
                        <td>{{$user->name}}</td>
                        <td>{{$user->email}}</td>
-                       <td>User</td>
+                       <td>{{$user->user_role}}</td>
                        <td>{{formatedCreateAt($user->create_at)}}</td>
                        <td>
                            <div class="button-group">
@@ -77,9 +77,11 @@
                                     </div>
                                 </div><!-- col-4 -->
                                 <div class="col-lg-4">
-                                    <div class="form-group">
+                                    <div class="form-group mg-b-10-force">
                                         <label class="form-control-label">Role: <span class="tx-danger">*</span></label>
-                                        <input class="form-control" type="text" name="role" value="McDoe" placeholder="Role" readonly>
+                                        <select name="role" class="form-control select2 allRoles" data-placeholder="Choose role">
+
+                                        </select>
                                     </div>
                                 </div><!-- col-4 -->
                                 <div class="col-lg-4">
@@ -142,14 +144,22 @@
 
                     let name = data.data.name
                     let email = data.data.email
-                    let role = data.data.user_role
+                    let uRole = data.user_role
                     let date = data.data.userDate
+                    let allRoles = data.allRoles
 
                     document.querySelector('input[name="name"]').value = name;
                     document.querySelector('input[name="email"]').value = email;
-                    document.querySelector('input[name="role"]').value = role;
                     document.querySelector('input[name="date"]').value = date;
                     document.querySelector('input[name="userId"]').value = data.data.id
+
+                    let roleSelect =`<option label="Choose role"></option>`
+                    Object.values(allRoles).forEach((role)=>{
+                        let selected = role.id == uRole ? 'selected':'';
+                        roleSelect+=` <option ${selected} value="${role.id}">${role.name}</option>`;
+                    })
+
+                    document.querySelector('.allRoles').insertAdjacentHTML('afterbegin',roleSelect)
 
                 }
             })
@@ -162,6 +172,9 @@
     async function updateUser(){
          let userId = document.querySelector('input[name="userId"]').value
          let UserName = document.querySelector('input[name="name"]').value
+         let selectedRole = document.querySelector('select[name="role"]')
+         let roleId = selectedRole.options[selectedRole.selectedIndex].value
+
 
         try {
             const response = await fetch('{{ route('admin.update.user.details') }}', {
@@ -173,6 +186,7 @@
                 body: JSON.stringify({
                     userId: userId,
                     UserName: UserName,
+                    roleId: roleId,
                 })
             });
 
