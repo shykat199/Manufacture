@@ -7,6 +7,8 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\RolePermissionController;
 use App\Http\Controllers\admin\RawProductController;
 use App\Http\Controllers\admin\RawProductSizeController;
+use App\Http\Controllers\admin\WareHouseController;
+use App\Http\Controllers\admin\ProductController;
 
 Route::controller(AuthController::class)->group(function (){
     Route::get('/sign-in','signInPage')->name('admin.sign-in');
@@ -55,5 +57,27 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('/delete-raw-product-size/{id}','deleteProduct')->name('admin.delete.product.size');
         Route::post('/update-raw-product-size/{id}','updateRawProductSize')->name('admin.update.raw.product.size');
         Route::post('/store-product-size','storeProductSize')->name('admin.store.product.size');
+    });
+
+    Route::prefix('ware-house')-> controller(WareHouseController::class)->group(function (){
+        Route::get('/create-product-warehouse','index')->name('admin.warehouse.create');
+        Route::get('/warehouse-details/{id}','detailsWareHouse')->name('admin.warehouse.details');
+        Route::post('/warehouse-details/{id}','updateWareHouse')->name('admin.warehouse.update');
+        Route::post('/create-product-warehouse','storeWareHouse')->name('admin.warehouse.store');
+        Route::get('/warehouse-racks','wareHouseRack')->name('admin.warehouse.rack');
+        Route::get('/warehouse-racks-delete/{id}','wareHouseRackDelete')->name('admin.warehouse.rack.delete');
+        Route::get('/warehouse-delete/{id}','wareHouseDelete')->name('admin.warehouse.delete');
+        Route::post('/warehouse-racks','storeWareHouseRack')->name('admin.store.warehouse.rack');
+    });
+
+    Route::prefix('ware-house-product')-> controller(ProductController::class)->group(function (){
+        Route::get('/create-warehouse-product','index')->name('admin.warehouse.product.create');
+        Route::get('/get-product-size/{id}','productSize')->name('admin.warehouse.product.size');
+        Route::get('/get-product-warehouse-rack/{id}','wareHouseRack')->name('admin.product.warehouse.rack');
+        Route::get('/product-list','productList')->name('admin.warehouse.product.list');
+        Route::get('/delete-product-list/{id}','deleteProduct')->name('admin.warehouse.product.delete');
+        Route::get('/warehouse-product-details/{id}','editWareHouseProduct')->name('admin.warehouse.product.details');
+        Route::post('/create-warehouse-product','storeProduct')->name('admin.warehouse.product.store');
+
     });
 });

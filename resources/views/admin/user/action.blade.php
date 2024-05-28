@@ -9,7 +9,7 @@
         <form method="post" action="{{route('admin.store.user')}}" >
             @csrf
             <h6 class="card-body-title">Create New User</h6>
-
+productWareHouseId
             <div class="form-layout">
                 <div class="row mg-b-25">
                     <div class="col-lg-4">

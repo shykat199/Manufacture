@@ -76,10 +76,45 @@
                 </div><!-- menu-item -->
             </a><!-- sl-menu-link -->
             <ul class="sl-menu-sub nav flex-column">
-                <li class="nav-item"><a href="{{route('admin.create.product')}}" class="nav-link">Add Raw Product</a></li>
-                <li class="nav-item"><a href="{{route('admin.create.product.size')}}" class="nav-link">Add Product Size</a></li>
-                <li class="nav-item"><a href="{{route('admin.product.list')}}" class="nav-link">Raw Product List</a></li>
+                <li class="nav-item"><a href="{{route('admin.create.product')}}" class="nav-link">Add Raw Product</a>
+                </li>
+                <li class="nav-item"><a href="{{route('admin.create.product.size')}}" class="nav-link">Add Product
+                        Size</a></li>
+                <li class="nav-item"><a href="{{route('admin.product.list')}}" class="nav-link">Raw Product List</a>
+                </li>
             </ul>
+        @endif
+
+        @if($productPermission > 0)
+            <a href="#"
+               class="sl-menu-link {{\Illuminate\Support\Facades\Request::segment(2)=='ware-house' ?'active show-sub':''}}">
+                <div class="sl-menu-item">
+                    <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                    <span class="menu-item-label">Product Warehouse</span>
+                    <i class="menu-item-arrow fa fa-angle-down"></i>
+                </div><!-- menu-item -->
+            </a><!-- sl-menu-link -->
+            <ul class="sl-menu-sub nav flex-column">
+                <li class="nav-item"><a href="{{route('admin.warehouse.create')}}" class="nav-link">Manage Warehouse</a>
+                </li>
+                <li class="nav-item"><a href="{{route('admin.warehouse.rack')}}" class="nav-link">Manage Rack</a></li>
+            </ul>
+
+
+            <a href="#"
+               class="sl-menu-link {{\Illuminate\Support\Facades\Request::segment(2)=='ware-house-product' ?'active show-sub':''}}">
+                <div class="sl-menu-item">
+                    <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                    <span class="menu-item-label">Products</span>
+                    <i class="menu-item-arrow fa fa-angle-down"></i>
+                </div><!-- menu-item -->
+            </a><!-- sl-menu-link -->
+            <ul class="sl-menu-sub nav flex-column">
+                <li class="nav-item"><a href="{{route('admin.warehouse.product.create')}}" class="nav-link">Add Product</a>
+                </li>
+                <li class="nav-item"><a href="{{route('admin.warehouse.product.list')}}" class="nav-link">Manage Product</a></li>
+            </ul>
+
         @endif
 
 

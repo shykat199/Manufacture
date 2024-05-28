@@ -73,7 +73,6 @@
 <script src="{{asset('admin/lib/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{asset('admin/lib/datatables-responsive/dataTables.responsive.js')}}"></script>
 <script src="{{asset('admin/lib/select2/js/select2.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('admin/lib/popper.js/popper.js')}}"></script>
 <script src="{{asset('admin/lib/bootstrap/bootstrap.js')}}"></script>
 <script src="{{asset('admin/lib/jquery-ui/jquery-ui.js')}}"></script>
@@ -90,7 +89,7 @@
 <script src="{{asset('admin/js/starlight.js')}}"></script>
 <script src="{{asset('admin/js/ResizeSensor.js')}}"></script>
 <script src="{{asset('admin/js/dashboard.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('admin/lib/sweetalert/sweetalert.js')}}"></script>
 
 @stack('admin.custom.script')
 </body>
