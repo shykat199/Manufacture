@@ -6,7 +6,7 @@
 
 @section('admin.content')
     <div class="card pd-20 pd-sm-40">
-        <form method="post" action="{{route('admin.warehouse.product.store')}}" >
+        <form method="post" action="{{ isset($getProductLists) && !empty($getProductLists)? route('admin.warehouse.product.update',[$getProductLists->id]) : route('admin.warehouse.product.store')}}" >
             @csrf
             <h6 class="card-body-title">Create New Product</h6>
 

@@ -78,6 +78,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('/delete-product-list/{id}','deleteProduct')->name('admin.warehouse.product.delete');
         Route::get('/warehouse-product-details/{id}','editWareHouseProduct')->name('admin.warehouse.product.details');
         Route::post('/create-warehouse-product','storeProduct')->name('admin.warehouse.product.store');
+        Route::post('/update-warehouse-product/{id}','updateProduct')->name('admin.warehouse.product.update');
 
     });
 });
